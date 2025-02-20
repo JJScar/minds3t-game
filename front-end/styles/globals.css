@@ -1,0 +1,1618 @@
+/* === Color Palette === */
+:root {
+    --blue-dark: #000562;
+    --purple-medium: #320140;
+    --blue-light: #91CDF2;
+    --blue-medium: #0378A6;
+    --cyan: #72F2F2;
+    --white: #ffffff;
+  }
+  
+  /* === Global Styles === */
+  body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgba(10, 10, 30, 0.9);
+  }
+  
+  /* ========================== */
+  /*        LAYOUT STYLES       */
+  /* ========================== */
+  
+  /* === Cyberpunk Home Page Styling === */
+
+/* === Main Content Layout === */
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1400px;
+    margin: 50px auto;
+    padding: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+/* === Background Overlay === */
+.content-container::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url("/background-chall.png") no-repeat center center fixed;
+    background-size: cover;
+    z-index: -3;
+}
+
+.content-container::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 30, 0.85);
+    z-index: -2;
+}
+
+/* === Sections (Why & Learn) === */
+.why-section,
+.learn-section {
+    flex: 1;
+    padding: 25px;
+    max-width: 450px;
+    border-radius: 8px;
+    background: rgba(5, 5, 20, 0.9);
+    box-shadow: 0px 0px 15px rgba(114, 242, 242, 0.5);
+    color: var(--cyan);
+    font-family: "Courier New", monospace;
+    text-align: center;
+    border: 2px solid var(--blue-medium);
+    text-shadow: 0px 0px 8px rgba(114, 242, 242, 0.7);
+}
+
+/* === Section Headings === */
+.why-section h1,
+.learn-section h1 {
+    font-size: 28px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+}
+
+.why-section h3,
+.learn-section h3 {
+    font-size: 22px;
+    color: var(--blue-light);
+    text-shadow: 0px 0px 8px rgba(3, 120, 166, 1);
+}
+
+/* === Text Styling === */
+.why-section p,
+.learn-section p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #91CDF2;
+    text-shadow: 0px 0px 8px rgba(145, 205, 242, 0.7);
+}
+
+/* === List Items === */
+.learn-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.learn-section li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #72F2F2;
+    text-shadow: 0px 0px 5px rgba(114, 242, 242, 0.8);
+}
+
+/* === Middle Logo Section === */
+.logo-section {
+    flex-shrink: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* === Logo Image === */
+.logo-section img {
+    width: 250px;
+    height: auto;
+    filter: drop-shadow(0px 0px 20px rgba(3, 120, 166, 0.7));
+    animation: glitchLogo 2s infinite alternate ease-in-out;
+}
+
+/* === Glitch Animation for Logo === */
+@keyframes glitchLogo {
+    0% { transform: translate(0px, 0px); }
+    25% { transform: translate(2px, -2px); filter: brightness(1.1); }
+    50% { transform: translate(-2px, 2px); filter: brightness(0.9); }
+    75% { transform: translate(1px, -1px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+/* === Mobile Responsive Design === */
+@media (max-width: 1024px) {
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .logo-section img {
+        width: 200px;
+    }
+
+    .why-section, .learn-section {
+        max-width: 90%;
+        margin-bottom: 20px;
+    }
+}
+  
+  /* ========================== */
+  /*        NAVBAR STYLES       */
+  /* ========================== */
+  
+  /* === Cyberpunk Navbar Styling === */
+.cyberpunk-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(10, 10, 30, 0.95);
+    border-bottom: 2px solid #0378A6;
+    box-shadow: 0px 0px 15px rgba(3, 120, 166, 0.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+    font-family: "Courier New", monospace;
+}
+
+/* Left Section (Logo) */
+.navbar-left img {
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 5px #72F2F2);
+    transition: transform 0.2s ease-in-out;
+}
+
+.navbar-left img:hover {
+    transform: scale(1.1);
+}
+
+/* Center Links */
+.navbar-center {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: #72F2F2;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+    text-transform: uppercase;
+    margin-left: 20px;
+}
+
+.nav-link:hover {
+    color: #0378A6;
+    text-shadow: 0px 0px 8px rgba(3, 120, 166, 1);
+}
+
+/* Glitchy Hover Effect */
+.nav-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: #72F2F2;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Right Section (Wallet Button) */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    margin-left: -100px;
+}
+
+/* === Cyberpunk Wallet Button === */
+.wallet-button {
+    font-size: 16px;
+    margin-right: 30px;
+    font-weight: bold;
+    color: #72F2F2;
+    background: linear-gradient(90deg, rgba(3,120,166,1) 0%, rgba(50,1,64,1) 100%);
+    border: 2px solid #72F2F2;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0px 0px 5px rgba(114, 242, 242, 0.8);
+    box-shadow: 0px 0px 10px rgba(3, 120, 166, 0.5);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.wallet-button:hover {
+    background: rgba(3, 120, 166, 0.8);
+    border-color: #72F2F2;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+    box-shadow: 0px 0px 20px rgba(3, 120, 166, 0.7);
+    transform: scale(1.1);
+}
+
+.wallet-button:active {
+    background: rgba(50,1,64,0.9);
+    box-shadow: 0px 0px 5px rgba(3, 120, 166, 0.5);
+    transform: scale(0.95);
+}
+  
+  /* ========================== */
+/*         CONTACT PAGE       */
+/* ========================== */
+
+.contact-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background Overlay */
+.contact-container::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url("/background-chall.png") no-repeat center center fixed;
+    background-size: cover;
+    z-index: -3;
+}
+
+.contact-container::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 10, 30, 0.85);
+    z-index: -2;
+}
+
+/* === Contact Page Layout === */
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 30px;
+    gap: 30px;
+}
+
+/* ========================== */
+/*     SOCIAL MEDIA SECTION   */
+/* ========================== */
+
+.socials-contact-container {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    padding: 30px;
+    background: rgba(5, 5, 20, 0.9);
+    box-shadow: 0px 0px 15px rgba(114, 242, 242, 0.5);
+    border: 2px solid var(--blue-medium);
+    border-radius: 8px;
+}
+
+.socials-contact-container h1 {
+    font-size: 28px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+}
+
+.social-items-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+/* Social Icons */
+.social-items-container div {
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-items-container div:hover {
+    transform: scale(1.1);
+}
+
+.social-items-container h3 {
+    font-size: 18px;
+    color: #91CDF2;
+    margin-top: 10px;
+    text-shadow: 0px 0px 8px rgba(145, 205, 242, 0.7);
+}
+
+/* Glitch Animation */
+@keyframes glitch {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    100% { transform: translate(0, 0); }
+}
+
+.social-items-container div:hover svg {
+    animation: glitch 0.2s infinite alternate;
+}
+
+/* ========================== */
+/*        HOME LAYOUT         */
+/* ========================== */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* === Main Content Layout === */
+.content-container {
+    display: flex;
+    max-width: 1500px;
+    margin: 50px auto;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+/* === Sections (Why & Learn) === */
+.why-section,
+.learn-section {
+    flex: 1;
+    padding: 20px;
+    max-width: 500px;
+    border-radius: 5px;
+    background-color: var(--blue-medium);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.why-section p,
+.learn-section p {
+    font-size: 20px;
+}
+
+/* === Middle Logo Section === */
+.logo-section {
+    flex-shrink: 0;
+    padding: 175px 70px 10px 50px;
+}
+
+/* ========================== */
+/*     SPECIAL THANKS STYLES  */
+/* ========================== */
+
+.thanks-section {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    padding: 50px;
+    margin-top: 100px; /* Adds spacing below the main content */
+    background: rgba(5, 5, 20, 0.9);
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(114, 242, 242, 0.5);
+    border: 2px solid var(--blue-medium);
+}
+
+.thanks-section h2 {
+    font-size: 28px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+}
+
+.thanks-section p {
+    font-size: 16px;
+    color: var(--blue-light);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* === Contributors Grid === */
+.thanks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* === Cyberpunk Contributor Cards === */
+.thanks-card {
+    font-size: 16px;
+    padding: 12px;
+    color: var(--cyan);
+    background: rgba(10, 10, 30, 0.8);
+    border: 2px solid var(--cyan);
+    text-align: center;
+    font-family: "Courier New", monospace;
+    box-shadow: 0px 0px 10px rgba(114, 242, 242, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.thanks-card:hover {
+    transform: scale(1.05);
+    background: rgba(3, 120, 166, 0.9);
+    box-shadow: 0px 0px 20px rgba(114, 242, 242, 1);
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .thanks-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* ========================== */
+/*        CONTACT FORM        */
+/* ========================== */
+
+.direct-contact-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    padding: 30px;
+    background: rgba(5, 5, 20, 0.9);
+    box-shadow: 0px 0px 15px rgba(114, 242, 242, 0.5);
+    border: 2px solid var(--blue-medium);
+    border-radius: 8px;
+}
+
+.direct-contact-container h1 {
+    font-size: 28px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+}
+
+/* === Form Styling === */
+.direct-contact-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.direct-contact-container label {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--blue-light);
+    text-align: left;
+}
+
+.direct-contact-container input,
+.direct-contact-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background: rgba(10, 10, 30, 0.8);
+    color: var(--cyan);
+    font-family: "Courier New", monospace;
+    border: 1px solid var(--cyan);
+}
+
+.direct-contact-container textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* === Cyberpunk Send Button === */
+.direct-contact-container button {
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    font-weight: bold;
+    color: #72F2F2;
+    background: linear-gradient(90deg, rgba(3,120,166,1) 0%, rgba(50,1,64,1) 100%);
+    border: 2px solid #72F2F2;
+    padding: 12px 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0px 0px 5px rgba(114, 242, 242, 0.8);
+    box-shadow: 0px 0px 10px rgba(3, 120, 166, 0.5);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.direct-contact-container button:hover {
+    background: rgba(3, 120, 166, 0.8);
+    border-color: #72F2F2;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+    box-shadow: 0px 0px 20px rgba(3, 120, 166, 0.7);
+    transform: scale(1.1);
+}
+
+.direct-contact-container button:active {
+    background: rgba(50,1,64,0.9);
+    box-shadow: 0px 0px 5px rgba(3, 120, 166, 0.5);
+    transform: scale(0.95);
+}
+
+/* == RESPONSIVE DESIGN == */
+@media (max-width: 1024px) {
+    .social-items-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .contact-content {
+        padding: 20px;
+    }
+
+    .direct-contact-container,
+    .socials-contact-container {
+        max-width: 90%;
+    }
+}
+  
+/* ========================== */
+/*      LEADERBOARD STYLES    */
+/* ========================== */
+
+/* === Leaderboard Container === */
+.leaderboard-container {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 100px auto;
+    padding: 50px;
+    text-align: center;
+    background: rgba(10, 10, 30, 0.9);
+    color: var(--cyan);
+    border-radius: 10px;
+}
+
+/* === Leaderboard Title === */
+.leaderboard-title {
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+    margin-bottom: 20px;
+}
+
+/* === Search Bar === */
+.search-bar {
+    width: 85%;
+    max-width: 450px;
+    padding: 12px;
+    margin: 15px auto;
+    display: block;
+    border-radius: 8px;
+    border: 2px solid var(--cyan);
+    background-color: rgba(5, 5, 20, 0.9);
+    color: var(--cyan);
+    font-size: 16px;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    box-shadow: 0px 0px 10px rgba(114, 242, 242, 0.4);
+}
+
+.search-bar::placeholder {
+    color: rgba(114, 242, 242, 0.6);
+}
+
+.search-bar:focus {
+    outline: none;
+    border-color: var(--blue-medium);
+    box-shadow: 0px 0px 15px rgba(3, 120, 166, 0.8);
+}
+
+/* === Leaderboard Table Wrapper === */
+.leaderboard-table-wrapper {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+/* === Leaderboard Table === */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(3, 120, 166, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: "Courier New", monospace;
+}
+
+/* === Table Headers === */
+.leaderboard-table th {
+    background-color: rgba(3, 120, 166, 0.9);
+    color: var(--white);
+    padding: 14px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* === Table Rows === */
+.leaderboard-table td {
+    padding: 12px;
+    border-bottom: 2px solid rgba(114, 242, 242, 0.3);
+    text-align: center;
+    font-size: 16px;
+    color: var(--cyan);
+    transition: background 0.3s ease-in-out;
+}
+
+/* === Alternating Row Colors === */
+.leaderboard-table tr:nth-child(even) {
+    background-color: rgba(5, 5, 20, 0.8);
+}
+
+/* === Hover Effect === */
+.leaderboard-table tr:hover {
+    background-color: rgba(3, 120, 166, 0.5);
+}
+
+/* === Top Players Special Styling === */
+.top-player {
+    background-color: rgba(255, 215, 0, 0.2) !important;
+    font-weight: bold;
+}
+
+.second-place {
+    background-color: rgba(192, 192, 192, 0.2) !important;
+}
+
+.third-place {
+    background-color: rgba(205, 127, 50, 0.2) !important;
+}
+
+/* ========================== */
+/*     RESPONSIVE DESIGN      */
+/* ========================== */
+@media (max-width: 768px) {
+    .leaderboard-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .leaderboard-title {
+        font-size: 24px;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* ======================================= */
+/* === Cyberpunk Themed Challenge Page === */
+/* ======================================= */
+
+.challenges-page {
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px 20px;
+    max-width: 1000px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(3, 120, 166, 0.7);
+    z-index: 2;
+}
+
+/* === Cyberpunk Glowing Title === */
+.cyberpunk-title {
+    font-size: 36px;
+    color: #72F2F2;
+    text-shadow: 0px 0px 8px rgba(114, 242, 242, 1);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: "Courier New", monospace;
+    margin-bottom: 20px;
+}
+
+/* === Challenge Grid Layout === */
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* === Challenge Item Container === */
+.challenge-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* === Challenge Nodes (Clickable) === */
+.challenge-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #72F2F2;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 0px 10px rgba(114, 242, 242, 0.5);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.challenge-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(114, 242, 242, 1);
+}
+
+/* === Completed Challenge Style === */
+.challenge-circle.completed {
+    border: none;
+}
+
+.challenge-circle.completed .node-image {
+    opacity: 0.3;
+}
+
+/* === Challenge Text (Under Logo) === */
+.challenge-text {
+    font-size: 14px;
+    color: #72F2F2;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    margin-top: 8px;
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
+    .challenges-page {
+        max-width: 95%;
+        padding: 20px;
+    }
+
+    .cyberpunk-title {
+        font-size: 28px;
+    }
+
+    .challenge-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .challenge-text {
+        font-size: 12px;
+    }
+
+    .challenges-grid {
+        gap: 20px;
+    }
+}
+
+/* ========================== */
+/*       PROGRESS PAGE        */
+/* ========================== */
+
+/* === Page Container === */
+.progress-page {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 30px;
+    text-align: center;
+    background: rgba(10, 10, 30, 0.9);
+    color: var(--cyan);
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(114, 242, 242, 0.6);
+    border: 2px solid var(--blue-medium);
+}
+
+/* === Progress Title === */
+.progress-title {
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+    margin-bottom: 20px;
+}
+
+/* ========================== */
+/*     PROGRESS BAR STYLES    */
+/* ========================== */
+
+.progress-bar-container {
+    width: 100%;
+    height: 25px;
+    background: rgba(5, 5, 20, 0.9);
+    border-radius: 10px;
+    border: 2px solid var(--cyan);
+    overflow: hidden;
+    position: relative;
+    margin: 20px 0;
+    box-shadow: 0px 0px 15px rgba(114, 242, 242, 0.6);
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, rgba(3,120,166,1) 0%, rgba(50,1,64,1) 100%);
+    text-align: center;
+    color: var(--white);
+    font-size: 14px;
+    line-height: 25px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+    transition: width 0.5s ease-in-out;
+}
+
+/* ========================== */
+/*    CHALLENGE TABLE STYLES  */
+/* ========================== */
+
+.challenge-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: rgba(3, 120, 166, 0.1);
+    font-family: "Courier New", monospace;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* === Table Headers === */
+.challenge-table th {
+    background-color: rgba(3, 120, 166, 0.9);
+    color: var(--white);
+    padding: 14px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* === Table Rows === */
+.challenge-table td {
+    padding: 12px;
+    border-bottom: 2px solid rgba(114, 242, 242, 0.3);
+    text-align: center;
+    font-size: 16px;
+    color: var(--cyan);
+    transition: background 0.3s ease-in-out;
+}
+
+/* === Alternating Row Colors === */
+.challenge-table tr:nth-child(even) {
+    background-color: rgba(5, 5, 20, 0.8);
+}
+
+/* === Hover Effect === */
+.challenge-table tr:hover {
+    background-color: rgba(3, 120, 166, 0.5);
+}
+
+/* ========================== */
+/*      STATS SECTION         */
+/* ========================== */
+
+.stats-container {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(10, 10, 30, 0.8);
+    border-radius: 10px;
+    border: 2px solid var(--cyan);
+    box-shadow: 0px 0px 15px rgba(114, 242, 242, 0.6);
+}
+
+.stats-container p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: var(--cyan);
+    text-shadow: 0px 0px 5px rgba(114, 242, 242, 0.6);
+}
+
+/* ========================== */
+/*    LEADERBOARD STYLES      */
+/* ========================== */
+
+.leaderboard-container {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(10, 10, 30, 0.8);
+    border-radius: 10px;
+    border: 2px solid var(--cyan);
+    box-shadow: 0px 0px 15px rgba(114, 242, 242, 0.6);
+    font-size: 16px;
+}
+
+/* ========================== */
+/*      BADGES SECTION        */
+/* ========================== */
+
+.badges-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.badge {
+    background: linear-gradient(90deg, rgba(3,120,166,1) 0%, rgba(50,1,64,1) 100%);
+    color: var(--white);
+    padding: 12px 18px;
+    border-radius: 25px;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+    box-shadow: 0px 0px 15px rgba(3, 120, 166, 0.6);
+}
+
+/* ========================== */
+/*     RESPONSIVE DESIGN      */
+/* ========================== */
+
+@media (max-width: 768px) {
+    .progress-page {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .progress-title {
+        font-size: 24px;
+    }
+
+    .progress-bar-container {
+        height: 20px;
+    }
+
+    .challenge-table th,
+    .challenge-table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .stats-container p {
+        font-size: 16px;
+    }
+
+    .badge {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+}
+
+  /* Profile Page */
+.profile-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Profile Image */
+  .profile-image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #0378a6;
+  }
+  
+  /* Player Handle */
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Edit Profile Button */
+  .edit-button {
+    background-color: #0378a6;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  .edit-button:hover {
+    background-color: #025c89;
+  }
+  
+  /* Bio */
+  .bio {
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  
+  /* Player Info */
+  .player-info {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  /* Badges */
+  .badges-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .badge {
+    background-color: #0378a6;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+  }
+  
+  /* Modal */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .modal-buttons button {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .modal-buttons button:first-child {
+    background-color: #0378a6;
+    color: white;
+  }
+  
+  .modal-buttons button:last-child {
+    background-color: #ccc;
+  }
+
+  /* ========================== */
+/*       DOCS PAGE LAYOUT     */
+/* ========================== */
+
+.docs-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(10, 10, 30, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(114, 242, 242, 0.6);
+    border: 2px solid var(--blue-medium);
+}
+
+/* ========================== */
+/*      SIDEBAR NAVIGATION    */
+/* ========================== */
+
+.docs-sidebar {
+    width: 280px;
+    padding: 20px;
+    background: rgba(5, 5, 20, 0.9);
+    border-radius: 10px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    border: 2px solid var(--cyan);
+    box-shadow: 0px 0px 10px rgba(114, 242, 242, 0.6);
+}
+
+/* Sidebar Title */
+.docs-sidebar h2 {
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    color: var(--cyan);
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+}
+
+/* Sidebar List */
+.docs-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+/* Sidebar Links */
+.docs-sidebar li {
+    margin-bottom: 12px;
+}
+
+.docs-sidebar a {
+    display: block;
+    padding: 12px;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: "Courier New", monospace;
+    color: var(--cyan);
+    border: 2px solid transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Sidebar Hover & Active */
+.docs-sidebar a:hover,
+.docs-sidebar a.active {
+    background: rgba(3, 120, 166, 0.6);
+    border: 2px solid var(--cyan);
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+    transform: scale(1.05);
+}
+
+/* ========================== */
+/*       MAIN CONTENT         */
+/* ========================== */
+
+.docs-content {
+    flex: 1;
+    padding: 0 30px;
+}
+
+/* Section Headers */
+.docs-content section {
+    margin-bottom: 50px;
+    padding: 20px;
+    background: rgba(10, 10, 30, 0.8);
+    border-radius: 10px;
+    border: 2px solid var(--cyan);
+    box-shadow: 0px 0px 10px rgba(114, 242, 242, 0.6);
+}
+
+/* Headings */
+.docs-content h1 {
+    font-size: 26px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+    color: var(--cyan);
+    margin-bottom: 15px;
+}
+
+/* Subheaders */
+.docs-content h3 {
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    color: var(--cyan);
+}
+
+/* Paragraphs */
+.docs-content p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--white);
+    font-family: "Courier New", monospace;
+}
+
+/* ========================== */
+/*     RESPONSIVE DESIGN      */
+/* ========================== */
+
+@media (max-width: 900px) {
+    .docs-container {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .docs-sidebar {
+        width: 100%;
+        position: relative;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .docs-content {
+        padding: 0 10px;
+    }
+}
+
+/* === Basic Challenge Layout === */
+.basic-challenge-layout {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Background */
+.challenge-background {
+    position: fixed; /* Ensure it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("/background-chall.png"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -10; /* Ensure it stays in the background */
+}
+
+/* Character */
+.guide-character {
+    position: absolute;
+    bottom: -1%;
+    left: 48%;
+    transform: translateX(-50%);
+    width: 300px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Terminal-Style Dialogue Box */
+.terminal-box {
+    position: absolute;
+    bottom: 73%; /* Adjust this to control the distance above the character */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #72F2F2;
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    padding: 20px;
+    border: 2px solid #0378A6;
+    box-shadow: 0px 0px 10px rgba(3, 120, 166, 0.5);
+    text-align: center;
+    border-radius: 5px;
+}
+
+/* Glitchy Text Effect */
+.glitch-text {
+    position: relative;
+    font-size: 18px;
+    font-family: "Courier New", monospace;
+    color: #72F2F2;
+    text-shadow: 0px 0px 4px rgba(114, 242, 242, 0.6);
+    animation: subtle-glitch 1.5s infinite alternate;
+}
+
+@keyframes subtle-glitch {
+    0% {
+        text-shadow: 1px 1px 2px #0378A6, -1px -1px 2px rgba(114, 242, 242, 0.5);
+    }
+    50% {
+        text-shadow: -1px -1px 2px #0378A6, 1px 1px 2px rgba(114, 242, 242, 0.5);
+    }
+    100% {
+        text-shadow: 0px 0px 3px rgba(114, 242, 242, 0.7);
+    }
+}
+
+/* Navigation Buttons */
+.challenge-navigation {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+}
+
+.nav-button {
+    font-family: "Courier New", monospace;
+    font-size: 22px;
+    font-weight: bold;
+    color: #72F2F2;
+    background: linear-gradient(90deg, rgba(3,120,166,1) 0%, rgba(50,1,64,1) 100%);
+    border: 2px solid #72F2F2;
+    padding: 12px 25px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0px 0px 5px rgba(114, 242, 242, 0.8);
+    box-shadow: 0px 0px 10px rgba(3, 120, 166, 0.5);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-button:hover {
+    background: rgba(3, 120, 166, 0.8);
+    border-color: #72F2F2;
+    text-shadow: 0px 0px 10px rgba(114, 242, 242, 1);
+    box-shadow: 0px 0px 20px rgba(3, 120, 166, 0.7);
+    transform: scale(1.1);
+}
+
+/* Cyberpunk Button Active Effect (Pressed) */
+.nav-button:active {
+    background: rgba(50,1,64,0.9);
+    box-shadow: 0px 0px 5px rgba(3, 120, 166, 0.5);
+    transform: scale(0.95);
+}
+
+.nav-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(114, 242, 242, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* === Finish Button (Cyberpunk Style) === */
+.finish-button {
+    position: absolute;
+    bottom: 45%;
+    left: 43%;
+    background: linear-gradient(90deg, rgba(166, 3, 3, 1) 0%, rgba(50, 1, 64, 1) 100%);
+    color: #ff0000;
+    font-size: 40px;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    padding: 20px 40px;
+    border: 2px solid #ff0000;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.7);
+}
+
+.finish-button:hover {
+    background: rgba(166, 3, 3, 0.8);
+    color: white;
+    border-color: #ff4444;
+    box-shadow: 0px 0px 25px rgba(255, 0, 0, 1);
+    transform: scale(1.1);
+}
+
+.finish-button:active {
+    background: rgba(50, 1, 64, 0.9);
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5);
+    transform: scale(0.95);
+}
+
+/* Timer Styling */
+.challenge-timer {
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+    font-size: 50px;
+    color: #72F2F2;
+    font-family: "Courier New", monospace;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 2px solid #72F2F2;
+}
+
+/* === Challenge Summary Styling === */
+.challenge-summary-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(3,120,166,0.9), rgba(50,1,64,0.9));
+    color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px rgba(3, 120, 166, 0.6);
+}
+
+.challenge-summary-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px var(--cyan);
+    margin-bottom: 20px;
+}
+
+.challenge-summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px;
+    border-bottom: 1px solid var(--cyan);
+}
+
+.summary-label {
+    font-weight: bold;
+    color: var(--cyan);
+}
+
+.summary-time {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+/* Back to Challenges Button */
+.summary-back-button {
+    margin-top: 20px;
+    background: linear-gradient(90deg, var(--blue-medium), var(--purple-medium));
+    color: var(--white);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 10px rgba(114, 242, 242, 0.7);
+}
+
+.summary-back-button:hover {
+    background: var(--cyan);
+    color: var(--blue-dark);
+    box-shadow: 0px 0px 20px rgba(114, 242, 242, 1);
+}
+
+/* === Mobile Responsiveness === */
+@media (max-width: 768px) {
+    .guide-character {
+        width: 250px;
+        height: auto;
+    }
+
+    .terminal-box {
+        width: 90%;
+        font-size: 16px;
+    }
+
+    .challenge-navigation {
+        width: 90%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-button {
+        width: 100%;
+    }
+}
+
+  /* ========================== */
+  /*     RESPONSIVE DESIGN      */
+  /* ========================== */
+  
+  @media (max-width: 768px) {
+    .dock-navbar {
+      width: 90%;
+      justify-content: space-around;
+      bottom: 10px;
+    }
+  
+    .dock-icon {
+      font-size: 20px;
+    }
+  
+    .dock-text {
+      font-size: 10px;
+    }
+  
+    .content-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .logo-section {
+      padding: 20px 0;
+    }
+
+    .challenge-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+      .challenge-connector {
+        height: 40px;
+      }
+  }

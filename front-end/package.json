@@ -1,0 +1,27 @@
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ace-builds": "^1.37.5",
+    "ethers": "^6.13.5",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-ace": "^13.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0"
+  }
+}
